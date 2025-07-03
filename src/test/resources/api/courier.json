@@ -1,0 +1,22 @@
+{
+  "path": "/courier",
+  "method": "POST",
+  "parameters": {
+    "login": {"type": "string", "description": "Логин курьера"},
+    "password": {"type": "string", "description": "Пароль курьера"},
+    "firstName": {"type": "string", "description": "Имя курьера"}
+  },
+  "exampleRequest": {
+    "login": "ninja",
+    "password": "1234",
+    "firstName": "saske"
+  },
+  "successResponse": {
+    "status": 201,
+    "body": {"ok": true}
+  },
+  "errorResponses": {
+    "409": {"message": "Этот логин уже используется"},
+    "400": {"message": "Недостаточно данных для создания учетной записи"}
+  }
+}

@@ -1,0 +1,59 @@
+{
+  "path": "/orders",
+  "method": "POST",
+  "parameters": {
+    "firstName": {"type": "string", "description": "Имя заказчика"},
+    "lastName": {"type": "string", "description": "Фамилия заказчика"},
+    "address": {"type": "string", "description": "Адрес заказчика"},
+    "metroStation": {"type": "string", "description": "Станция метро"},
+    "phone": {"type": "string", "description": "Телефон заказчика"},
+    "rentTime": {"type": "number", "description": "Дни аренды"},
+    "deliveryDate": {"type": "string", "description": "Дата доставки"},
+    "comment": {"type": "string", "description": "Комментарий"},
+    "color": {"type": "string[]", "description": "Цвета (BLACK, GREY)", "optional": true}
+  },
+  "exampleRequest": {
+    "firstName": "Naruto",
+    "lastName": "Uchiha",
+    "address": "Konoha, 142 apt.",
+    "metroStation": "4",
+    "phone": "+7 800 355 35 35",
+    "rentTime": 5,
+    "deliveryDate": "2020-06-06",
+    "comment": "Saske, come back to Konoha",
+    "color": ["BLACK"]
+  },
+  "successResponse": {
+    "status": 201,
+    "body": {"track": 124124}
+  }
+}{
+  "path": "/orders",
+  "method": "POST",
+  "parameters": {
+    "firstName": {"type": "string", "description": "Имя заказчика"},
+    "lastName": {"type": "string", "description": "Фамилия заказчика"},
+    "address": {"type": "string", "description": "Адрес заказчика"},
+    "metroStation": {"type": "string", "description": "Станция метро"},
+    "phone": {"type": "string", "description": "Телефон заказчика"},
+    "rentTime": {"type": "number", "description": "Дни аренды"},
+    "deliveryDate": {"type": "string", "description": "Дата доставки"},
+    "comment": {"type": "string", "description": "Комментарий"},
+    "color": {"type": "string[]", "description": "Цвета (BLACK, GREY)", "optional": true}
+  },
+  "exampleRequest": {
+    "firstName": "Naruto",
+    "lastName": "Uchiha",
+    "address": "Konoha, 142 apt.",
+    "metroStation": "4",
+    "phone": "+7 800 355 35 35",
+    "rentTime": 5,
+    "deliveryDate": "2020-06-06",
+    "comment": "Saske, come back to Konoha",
+    "color": ["BLACK"]
+  },
+  "successResponse": {
+    "status": 201,
+    "body": {"track": 124124}
+  }
+}

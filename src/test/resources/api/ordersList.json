@@ -1,0 +1,24 @@
+{
+  "path": "/orders",
+  "method": "GET",
+  "parameters": {
+    "courierId": {"type": "number", "description": "ID курьера", "optional": true},
+    "nearestStation": {"type": "string[]", "description": "Фильтр станций метро", "optional": true},
+    "limit": {"type": "number", "description": "Количество заказов", "optional": true, "default": 30},
+    "page": {"type": "number", "description": "Номер страницы", "optional": true, "default": 0}
+  },
+  "exampleRequest": "/orders?courierId=1&nearestStation=[\"1\",\"2\"]",
+  "successResponse": {
+    "status": 200,
+    "body": {
+      "orders": [
+        {"id": 4, "track": 400443, "status": 0}
+      ],
+      "pageInfo": {"page": 0, "total": 3, "limit": 2},
+      "availableStations": [{"name": "Черкизовская", "number": "2"}]
+    }
+  },
+  "errorResponses": {
+    "404": {"message": "Курьер с идентификатором {courierId} не найден"}
+  }
+}
