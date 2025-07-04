@@ -1,0 +1,47 @@
+{
+  "endpoint": "/api/v1/courier",
+  "method": "POST",
+  "description": "Создание курьера",
+  "parameters": [
+    {
+      "name": "login",
+      "type": "string",
+      "description": "Логин курьера, записывается в поле login таблицы Couriers"
+    },
+    {
+      "name": "password",
+      "type": "string",
+      "description": "Пароль курьера, хэш от значения записывается в поле passwordHash таблицы Couriers"
+    },
+    {
+      "name": "firstName",
+      "type": "string",
+      "description": "Имя курьера, записывается в поле firstName таблицы Couriers"
+    }
+  ],
+  "request_example": {
+    "login": "ninja",
+    "password": "1234",
+    "firstName": "saske"
+  },
+  "responses": {
+    "201": {
+      "description": "Успешное создание учетной записи",
+      "body": {
+        "ok": true
+      }
+    },
+    "400": {
+      "description": "Запрос без логина или пароля",
+      "body": {
+        "message": "Недостаточно данных для создания учетной записи"
+      }
+    },
+    "409": {
+      "description": "Запрос с повторяющимся логином",
+      "body": {
+        "message": "Этот логин уже используется"
+      }
+    }
+  }
+}

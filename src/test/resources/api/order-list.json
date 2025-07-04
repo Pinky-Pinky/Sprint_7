@@ -1,0 +1,126 @@
+{
+  "endpoint": "/api/v1/orders",
+  "method": "GET",
+  "description": "Получение списка заказов",
+  "parameters": [
+    {
+      "name": "courierId",
+      "type": "number",
+      "description": "Идентификатор курьера. Если указан - возвращает все активные и завершенные заказы этого курьера",
+      "optional": true
+    },
+    {
+      "name": "nearestStation",
+      "type": "string",
+      "description": "Фильтр станций метро. Передается в виде JSON, например: { nearestStation: [\"1\", \"2\"] }",
+      "optional": true
+    },
+    {
+      "name": "limit",
+      "type": "number",
+      "description": "Количество заказов на странице. Максимум: 30, По умолчанию: 30",
+      "optional": true
+    },
+    {
+      "name": "page",
+      "type": "number",
+      "description": "Текущая страница показа заказов. По умолчанию: 0",
+      "optional": true
+    }
+  ],
+  "request_examples": [
+    {
+      "description": "Все активные/завершенные заказы курьера",
+      "query": "/v1/orders?courierId=1"
+    },
+    {
+      "description": "Все активные/завершенные заказы курьера на станциях \"Бульвар Рокоссовского\"(1) или \"Черкизовская\"(2)",
+      "query": "/v1/orders?courierId=1&nearestStation=[\"1\", \"2\"]"
+    },
+    {
+      "description": "10 заказов, доступных для взятия курьером",
+      "query": "/v1/orders?limit=10&page=0"
+    },
+    {
+      "description": "10 заказов, доступных для взятия курьером возле метро \"Калужская\"(110)",
+      "query": "/v1/orders?limit=10&page=0&nearestStation=[\"110\"]"
+    }
+  ],
+  "responses": {
+    "200": {
+      "description": "Успешный запрос без courierId",
+      "body": {
+        "orders": [
+          {
+            "id": 4,
+            "courierId": null,
+            "firstName": "ваыпывп",
+            "lastName": "ывпывп",
+            "address": "пывпывп",
+            "metroStation": "2",
+            "phone": "423424234432",
+            "rentTime": 4,
+            "deliveryDate": "2020-06-21T21:00:00.000Z",
+            "track": 400443,
+            "color": [
+              "BLACK",
+              "GREY"
+            ],
+            "comment": "ываимм",
+            "createdAt": "2020-06-21T13:21:30.067Z",
+            "updatedAt": "2020-06-21T13:21:30.067Z",
+            "status": 0
+          },
+          {
+            "id": 5,
+            "courierId": null,
+            "firstName": "вфцфвц",
+            "lastName": "вфцвфцв",
+            "address": "вфцвфцвфц",
+            "metroStation": "4",
+            "phone": "1441412414",
+            "rentTime": 4,
+            "deliveryDate": "2020-06-08T21:00:00.000Z",
+            "track": 189237,
+            "color": [
+              "BLACK",
+              "GREY"
+            ],
+            "comment": "вфцвфцвфцв",
+            "createdAt": "2020-06-21T13:23:09.404Z",
+            "updatedAt": "2020-06-21T13:23:09.404Z",
+            "status": 0
+          }
+        ],
+        "pageInfo": {
+          "page": 0,
+          "total": 3,
+          "limit": 2
+        },
+        "availableStations": [
+          {
+            "name": "Черкизовская",
+            "number": "2",
+            "color": "#D92B2C"
+          },
+          {
+            "name": "Преображенская площадь",
+            "number": "3",
+            "color": "#D92B2C"
+          },
+          {
+            "name": "Сокольники",
+            "number": "4",
+            "color": "#D92B2C"
+          }
+        ]
+      }
+    },
+    "404": {
+      "description": "Запрос с несуществующим id",
+      "body": {
+        "message": "Курьер с идентификатором {courierId} не найден"
+      }
+    }
+  }
+}
