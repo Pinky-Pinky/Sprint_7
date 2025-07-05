@@ -1,5 +1,6 @@
 package org.example;
 
+import org.example.utils.Config;
 import io.qameta.allure.Description;
 import io.qameta.allure.junit4.DisplayName;
 import io.restassured.RestAssured;
@@ -13,7 +14,7 @@ import static io.restassured.RestAssured.given;
 import static org.hamcrest.Matchers.*;
 
 public class CourierLoginTests {
-    private static final String BASE_URL = "https://qa-scooter.praktikum-services.ru";
+    private static final String BASE_URL = Config.BASE_URL;
     private String courierId;
     private String login;
 
