@@ -9,7 +9,7 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Ignore;
 import org.junit.Test;
-
+import com.github.javafaker.Faker;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 import static io.restassured.RestAssured.given;
@@ -17,12 +17,13 @@ import static org.hamcrest.Matchers.*;
 
 public class CourierLoginTests {
     private static final ObjectMapper mapper = new ObjectMapper();
+    private static final Faker faker = new Faker();
     private String courierId;
     private String login;
 
     @Before
     public void setUp() throws Exception {
-        login = "ninja" + System.currentTimeMillis(); // Уникальный логин
+        login = "ninja_" + faker.name().username(); // Уникальный логин с JavaFaker
         CourierModel courier = new CourierModel(login, "1234", null);
         Response response = CourierApi.createCourier(courier);
         response.then()
@@ -69,7 +70,7 @@ public class CourierLoginTests {
     @DisplayName("Login with non-existent user")
     @Description("Test that login fails for non-existent user")
     public void testLoginNonExistentUser() {
-        String nonExistentLogin = "nonexistent" + System.currentTimeMillis();
+        String nonExistentLogin = "nonexistent_" + faker.name().username();
         Response response = CourierApi.loginCourier(nonExistentLogin, "1234");
         response.then()
                 .statusCode(404)
