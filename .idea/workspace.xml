@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="fe7b4e21-7374-4b8c-b94a-839bfeecd6ea" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/org/example/CourierLoginTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/org/example/CourierLoginTests.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/org/example/OrderListTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/org/example/OrderListTests.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/org/example/models/OrderModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/org/example/models/OrderModel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/allure-results/0d2120df-246b-433a-995c-c4dcbef06edc-result.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/allure-results/38cdb6d8-bd42-4025-837a-48dc299255c7-result.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/allure-results/3b6066eb-1e3a-4499-ab65-9d139a737bce-result.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/allure-results/4383f375-3e2f-4fb7-8296-dcf54f097a91-result.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/allure-results/45bc99e1-df1a-417f-a09b-37e0537f6654-result.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/allure-results/4a366011-4491-4622-93f3-f3fe1a58dadd-result.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/allure-results/4a55d03a-eab2-462d-9ebe-3bcd25278d84-result.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/allure-results/57af0bc8-ea7d-45f7-8f19-0af63ca47c8a-result.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/allure-results/63f25c8a-2b4a-4735-8aad-0c92fc989878-result.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/allure-results/696b9787-9833-42c5-9059-f07b57e6657e-result.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/allure-results/90ddd94f-0e06-4f56-bc44-2848dfee203b-result.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/allure-results/allure.properties" beforeDir="false" afterPath="$PROJECT_DIR$/target/allure-results/allure.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/allure-results/bab88b86-e68f-4b20-b945-a83e580b1a9a-result.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/allure-results/d34a6fd2-3328-4cd7-a3a9-674c15063b8a-result.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/allure-results/ec642019-5583-482b-a83f-fad3608be2ce-result.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/allure-results/f5a7dbbe-e32d-4f12-88d5-e65c0bfe12d1-result.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/allure-results/f83e357b-4059-40f8-968a-cada12e043c4-result.json" beforeDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 1
+}</component>
+  <component name="ProjectId" id="2zNY61q0WALXpXMMjnyC1RsRHf7" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;JUnit.OrdersListTest.executor&quot;: &quot;Run&quot;,
+    &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;develop&quot;,
+    &quot;onboarding.tips.debug.path&quot;: &quot;/Users/andreygrishin/Downloads/Sprint_7/src/main/java/org/example/Main.java&quot;
+  }
+}</component>
+  <component name="RecentsManager">
+    <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
+      <recent name="org.example" />
+    </key>
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="fe7b4e21-7374-4b8c-b94a-839bfeecd6ea" name="Changes" comment="" />
+      <created>1751572819754</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1751572819754</updated>
+    </task>
+    <servers />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/test/java/org/example/OrderListTests.java</url>
+          <line>114</line>
+          <option name="timeStamp" value="3" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
+  </component>
+</project>
