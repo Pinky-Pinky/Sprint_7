@@ -12,6 +12,20 @@ import static io.restassured.RestAssured.given;
 public class CourierApi {
     private static final ObjectMapper mapper = new ObjectMapper();
 
+    // Модель для логина (если её нет, добавьте)
+    public static class LoginRequest {
+        private String login;
+        private String password;
+
+        public LoginRequest(String login, String password) {
+            this.login = login;
+            this.password = password;
+        }
+
+        public String getLogin() { return login; }
+        public String getPassword() { return password; }
+    }
+
     @Step("Create a new courier")
     public static Response createCourier(CourierModel courier) {
         try {
@@ -29,13 +43,18 @@ public class CourierApi {
 
     @Step("Login courier with credentials")
     public static Response loginCourier(String login, String password) {
-        String jsonBody = "{\"login\": \"" + login + "\", \"password\": \"" + password + "\"}";
-        return given()
-                .spec(RestClient.getBaseSpec())
-                .body(jsonBody)
-                .log().all() // Логирование для отладки
-                .when()
-                .post("/api/v1/courier/login");
+        try {
+            LoginRequest loginRequest = new LoginRequest(login, password);
+            String jsonBody = mapper.writeValueAsString(loginRequest);
+            return given()
+                    .spec(RestClient.getBaseSpec())
+                    .body(jsonBody)
+                    .log().all() // Логирование для отладки
+                    .when()
+                    .post("/api/v1/courier/login");
+        } catch (Exception e) {
+            throw new RuntimeException("Failed to serialize login request", e);
+        }
     }
 
     @Step("Delete courier by ID")
