@@ -12,18 +12,22 @@ import org.junit.Ignore;
 import org.junit.Test;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.github.javafaker.Faker;
 
-import static io.restassured.RestAssured.given;
+import java.util.HashMap;
+import java.util.Map;
+
 import static org.hamcrest.Matchers.*;
 
 public class OrderListTests {
     private static final ObjectMapper mapper = new ObjectMapper();
+    private static final Faker faker = new Faker();
     private String courierId;
     private String login;
 
     @Before
     public void setUp() {
-        login = "ninja" + System.currentTimeMillis();
+        login = "ninja_" + faker.name().username();
         CourierModel courier = new CourierModel(login, "1234", "Saske");
         Response createResponse = CourierApi.createCourier(courier);
         if (createResponse.statusCode() != 201) {
@@ -42,10 +46,8 @@ public class OrderListTests {
     @After
     public void tearDown() {
         if (courierId != null) {
-            given()
-                    .spec(RestClient.getBaseSpec())
-                    .delete("/api/v1/courier/" + courierId)
-                    .then()
+            Response response = RestClient.sendDeleteRequest("/api/v1/courier/" + courierId);
+            response.then()
                     .statusCode(200);
         }
     }
@@ -54,12 +56,8 @@ public class OrderListTests {
     @DisplayName("Get order list without parameters")
     @Description("Test that the order list endpoint returns a list of orders without parameters")
     public void testGetOrderList() {
-        given()
-                .spec(RestClient.getBaseSpec())
-                .log().all()
-                .when()
-                .get("/api/v1/orders")
-                .then()
+        Response response = RestClient.sendGetRequest("/api/v1/orders", null);
+        response.then()
                 .statusCode(200)
                 .body("orders", not(empty()))
                 .body("pageInfo", notNullValue())
@@ -71,13 +69,10 @@ public class OrderListTests {
     @DisplayName("Get order list with courierId")
     @Description("Test that the order list endpoint filters orders by courierId")
     public void testGetOrderListWithCourierId() {
-        given()
-                .spec(RestClient.getBaseSpec())
-                .log().all()
-                .queryParam("courierId", courierId)
-                .when()
-                .get("/api/v1/orders")
-                .then()
+        Map<String, Object> params = new HashMap<>();
+        params.put("courierId", courierId);
+        Response response = RestClient.sendGetRequest("/api/v1/orders", params);
+        response.then()
                 .statusCode(200)
                 .body("orders", instanceOf(java.util.List.class))
                 .body("pageInfo", notNullValue())
@@ -88,13 +83,10 @@ public class OrderListTests {
     @DisplayName("Get order list with non-existent courierId")
     @Description("Test that the order list endpoint returns 404 for non-existent courierId")
     public void testGetOrderListNonExistentCourier() {
-        given()
-                .spec(RestClient.getBaseSpec())
-                .log().all()
-                .queryParam("courierId", "999999")
-                .when()
-                .get("/api/v1/orders")
-                .then()
+        Map<String, Object> params = new HashMap<>();
+        params.put("courierId", "999999");
+        Response response = RestClient.sendGetRequest("/api/v1/orders", params);
+        response.then()
                 .statusCode(404)
                 .body("message", containsString("не найден"))
                 .log().body();
@@ -105,13 +97,10 @@ public class OrderListTests {
     @DisplayName("Get order list with nearestStation")
     @Description("Test that the order list endpoint filters orders by nearestStation")
     public void testGetOrderListWithNearestStation() {
-        given()
-                .spec(RestClient.getBaseSpec())
-                .log().all()
-                .queryParam("nearestStation", "1,2") // Проверьте формат в документации API
-                .when()
-                .get("/api/v1/orders")
-                .then()
+        Map<String, Object> params = new HashMap<>();
+        params.put("nearestStation", "1,2");
+        Response response = RestClient.sendGetRequest("/api/v1/orders", params);
+        response.then()
                 .statusCode(200)
                 .body("orders", instanceOf(java.util.List.class))
                 .body("pageInfo", notNullValue())
@@ -122,14 +111,11 @@ public class OrderListTests {
     @DisplayName("Get order list with limit and page")
     @Description("Test that the order list endpoint respects limit and page parameters")
     public void testGetOrderListWithLimitAndPage() {
-        given()
-                .spec(RestClient.getBaseSpec())
-                .log().all()
-                .queryParam("limit", 10)
-                .queryParam("page", 0)
-                .when()
-                .get("/api/v1/orders")
-                .then()
+        Map<String, Object> params = new HashMap<>();
+        params.put("limit", 10);
+        params.put("page", 0);
+        Response response = RestClient.sendGetRequest("/api/v1/orders", params);
+        response.then()
                 .statusCode(200)
                 .body("orders", instanceOf(java.util.List.class))
                 .body("pageInfo.limit", equalTo(10))
