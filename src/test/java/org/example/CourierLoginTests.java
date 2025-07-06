@@ -1,49 +1,47 @@
 package org.example;
 
-import org.example.utils.Config;
 import io.qameta.allure.Description;
 import io.qameta.allure.junit4.DisplayName;
-import io.restassured.RestAssured;
 import io.restassured.response.Response;
+import org.example.api.CourierApi;
+import org.example.models.CourierModel;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Ignore;
 import org.junit.Test;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
+
 import static io.restassured.RestAssured.given;
 import static org.hamcrest.Matchers.*;
 
 public class CourierLoginTests {
-    private static final String BASE_URL = Config.BASE_URL;
+    private static final ObjectMapper mapper = new ObjectMapper();
     private String courierId;
     private String login;
 
     @Before
-    public void setUp() {
-        RestAssured.baseURI = BASE_URL;
-        RestAssured.requestSpecification = given()
-                .header("Content-Type", "application/json")
-                .config(io.restassured.config.RestAssuredConfig.config()
-                        .httpClient(io.restassured.config.HttpClientConfig.httpClientConfig()
-                                .setParam("http.connection.timeout", 30000)
-                                .setParam("http.socket.timeout", 30000)));
-        login = "ninja" + System.currentTimeMillis();
-        String body = "{\"login\": \"" + login + "\", \"password\": \"1234\", \"firstName\": \"saske\"}";
-        Response response = given()
-                .body(body)
-                .post("/api/v1/courier");
-        response.then().statusCode(201);
-        Response loginResponse = given()
-                .body("{\"login\": \"" + login + "\", \"password\": \"1234\"}")
-                .post("/api/v1/courier/login");
-        courierId = loginResponse.jsonPath().getString("id");
+    public void setUp() throws Exception {
+        login = "ninja" + System.currentTimeMillis(); // Уникальный логин
+        CourierModel courier = new CourierModel(login, "1234", null);
+        Response response = CourierApi.createCourier(courier);
+        response.then()
+                .log().all() // Логирование ответа
+                .statusCode(201); // Ожидаем 201
+        courierId = response.jsonPath().getString("id"); // Проверяем, есть ли id
+        System.out.println("Created courierId: " + courierId);
+        // Логин для получения ID, если нужно
+        Response loginResponse = CourierApi.loginCourier(login, "1234");
+        loginResponse.then()
+                .statusCode(200)
+                .body("id", notNullValue());
+        courierId = loginResponse.jsonPath().getString("id"); // Обновляем ID после логина
     }
 
     @After
-    public void tearDown() {
+    public void cleanUp() {
         if (courierId != null) {
-            given()
-                    .delete("/api/v1/courier/" + courierId);
+            CourierApi.deleteCourier(courierId);
         }
     }
 
@@ -51,10 +49,8 @@ public class CourierLoginTests {
     @DisplayName("Courier can login")
     @Description("Test that a courier can login with valid credentials")
     public void testCourierCanLogin() {
-        given()
-                .body("{\"login\": \"" + login + "\", \"password\": \"1234\"}")
-                .post("/api/v1/courier/login")
-                .then()
+        Response response = CourierApi.loginCourier(login, "1234");
+        response.then()
                 .statusCode(200)
                 .body("id", notNullValue());
     }
@@ -63,10 +59,8 @@ public class CourierLoginTests {
     @DisplayName("Login with wrong password")
     @Description("Test that login fails with incorrect password")
     public void testLoginWithWrongPassword() {
-        given()
-                .body("{\"login\": \"" + login + "\", \"password\": \"wrong\"}")
-                .post("/api/v1/courier/login")
-                .then()
+        Response response = CourierApi.loginCourier(login, "wrong");
+        response.then()
                 .statusCode(404)
                 .body("message", equalTo("Учетная запись не найдена"));
     }
@@ -75,10 +69,9 @@ public class CourierLoginTests {
     @DisplayName("Login with non-existent user")
     @Description("Test that login fails for non-existent user")
     public void testLoginNonExistentUser() {
-        given()
-                .body("{\"login\": \"nonexistent" + System.currentTimeMillis() + "\", \"password\": \"1234\"}")
-                .post("/api/v1/courier/login")
-                .then()
+        String nonExistentLogin = "nonexistent" + System.currentTimeMillis();
+        Response response = CourierApi.loginCourier(nonExistentLogin, "1234");
+        response.then()
                 .statusCode(404)
                 .body("message", equalTo("Учетная запись не найдена"));
     }
@@ -88,10 +81,8 @@ public class CourierLoginTests {
     @DisplayName("Login missing field")
     @Description("Test that login fails when a required field is missing")
     public void testLoginMissingField() {
-        given()
-                .body("{\"login\": \"" + login + "\"}")
-                .post("/api/v1/courier/login")
-                .then()
+        Response response = CourierApi.loginCourier(login, "");
+        response.then()
                 .statusCode(400)
                 .body("message", equalTo("Недостаточно данных для входа"));
     }
