@@ -48,4 +48,21 @@ public class RestClient {
                 .then()
                 .extract().response();
     }
+
+    public static Response sendPostRequest(String endpoint, String body, String authToken) {
+        RequestSpecification request = given()
+                .spec(getBaseSpec())
+                .log().all()
+                .body(body);
+
+        if (authToken != null) {
+            request.header("Authorization", "Bearer " + authToken);
+        }
+
+        return request
+                .when()
+                .post(endpoint)
+                .then()
+                .extract().response();
+    }
 }
