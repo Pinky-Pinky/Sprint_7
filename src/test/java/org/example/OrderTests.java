@@ -20,6 +20,10 @@ import com.github.javafaker.Faker;
 
 import java.util.Arrays;
 import java.util.Collection;
+import java.util.Collections;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 import static io.restassured.RestAssured.given;
 import static org.hamcrest.Matchers.*;
@@ -33,14 +37,15 @@ public class OrderTests {
     private String authToken;
 
     @Parameterized.Parameter
-    public String color; // Единственное объявление переменной color
+    public Object color; // Object для поддержки String и List
 
     @Parameterized.Parameters
     public static Collection<Object[]> data() {
         return Arrays.asList(new Object[][]{
-                {"BLACK"},
-                {"GREY"},
-                {null}
+                {"BLACK"},          // Один цвет
+                {"GREY"},           // Один цвет
+                {null},             // Без цвета
+                {Arrays.asList("BLACK", "GREY")} // Два цвета
         });
     }
 
@@ -68,7 +73,7 @@ public class OrderTests {
     @After
     public void cleanUp() {
         if (orderTrack != null) {
-            OrderApi.cancelOrder(orderTrack);
+            OrderApi.cancelOrder(orderTrack, authToken);
         }
         if (courierId != null) {
             RestClient.sendDeleteRequest("/api/v1/courier/" + courierId)
@@ -82,18 +87,34 @@ public class OrderTests {
     @DisplayName("Test creating order with different colors")
     @Description("Test creating order with valid data and different colors")
     public void testCreateOrder() {
-        OrderModel order = new OrderModel(
-                "Naruto",
-                "Uzumaki",
-                "1234567890",
-                4,
-                "2025-07-06T15:00:00Z",
-                "15:00",
-                color,
-                2,
-                "Comment for delivery",
-                500
-        );
+        OrderModel order;
+        if (color instanceof List) {
+            order = new OrderModel(
+                    "Naruto",
+                    "Uzumaki",
+                    "1234567890",
+                    4,
+                    "2025-07-06T15:00:00Z",
+                    "15:00",
+                    (List<String>) color, // Список цветов
+                    2,
+                    "Comment for delivery",
+                    500
+            );
+        } else {
+            order = new OrderModel(
+                    "Naruto",
+                    "Uzumaki",
+                    "1234567890",
+                    4,
+                    "2025-07-06T15:00:00Z",
+                    "15:00",
+                    color != null ? Collections.singletonList(color.toString()) : null, // Один цвет как список
+                    2,
+                    "Comment for delivery",
+                    500
+            );
+        }
         order.setCourierId(courierId);
         String jsonBody = null;
         try {
@@ -116,7 +137,9 @@ public class OrderTests {
     @DisplayName("Test getting order list")
     @Description("Test retrieving the list of orders")
     public void testGetOrderList() {
-        Response response = RestClient.sendGetRequest("/api/v1/orders", null)
+        Map<String, Object> params = new HashMap<>();
+        params.put("Authorization", "Bearer " + authToken); // Добавление токена в параметры
+        Response response = RestClient.sendGetRequest("/api/v1/orders", params)
                 .then()
                 .extract().response();
         response.then()
@@ -137,7 +160,7 @@ public class OrderTests {
                 4,
                 "2025-07-06T15:00:00Z",
                 "15:00",
-                "Black",
+                Collections.singletonList("Black"), // Один цвет как список
                 2,
                 "Comment for delivery",
                 500
