@@ -1,0 +1,41 @@
+{
+  "endpoint": "/api/v1/courier/login",
+  "method": "POST",
+  "description": "Логин курьера в системе",
+  "parameters": [
+    {
+      "name": "login",
+      "type": "string",
+      "description": "Логин курьера, хранится в поле login таблицы Couriers"
+    },
+    {
+      "name": "password",
+      "type": "string",
+      "description": "Пароль курьера, хэш от значения хранится в поле passwordHash таблицы Couriers"
+    }
+  ],
+  "request_example": {
+    "login": "ninja",
+    "password": "1234"
+  },
+  "responses": {
+    "200": {
+      "description": "Успешный логин",
+      "body": {
+        "id": 12345
+      }
+    },
+    "400": {
+      "description": "Запрос без пароля",
+      "body": {
+        "message": "Недостаточно данных для входа"
+      }
+    },
+    "404": {
+      "description": "Запрос с несуществующей парой логин-пароль",
+      "body": {
+        "message": "Учетная запись не найдена"
+      }
+    }
+  }
+}

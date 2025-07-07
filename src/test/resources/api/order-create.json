@@ -1,0 +1,72 @@
+{
+  "endpoint": "/api/v1/orders",
+  "method": "POST",
+  "description": "Создание заказа",
+  "parameters": [
+    {
+      "name": "firstName",
+      "type": "string",
+      "description": "Имя заказчика, записывается в поле firstName таблицы Orders"
+    },
+    {
+      "name": "lastName",
+      "type": "string",
+      "description": "Фамилия заказчика, записывается в поле lastName таблицы Orders"
+    },
+    {
+      "name": "address",
+      "type": "string",
+      "description": "Адрес заказчика, записывается в поле address таблицы Orders"
+    },
+    {
+      "name": "metroStation",
+      "type": "string",
+      "description": "Ближайшая к заказчику станция метро, записывается в поле metroStation таблицы Orders"
+    },
+    {
+      "name": "phone",
+      "type": "string",
+      "description": "Телефон заказчика, записывается в поле phone таблицы Orders"
+    },
+    {
+      "name": "rentTime",
+      "type": "number",
+      "description": "Количество дней аренды, записывается в поле rentTime таблицы Orders"
+    },
+    {
+      "name": "deliveryDate",
+      "type": "string",
+      "description": "Дата доставки, записывается в поле deliveryDate таблицы Orders"
+    },
+    {
+      "name": "comment",
+      "type": "string",
+      "description": "Комментарий от заказчика, записывается в поле comment таблицы Orders"
+    },
+    {
+      "name": "color",
+      "type": "string[]",
+      "description": "Предпочитаемые цвета, записываются в поле color таблицы Orders",
+      "optional": true
+    }
+  ],
+  "request_example": {
+    "firstName": "Naruto",
+    "lastName": "Uchiha",
+    "address": "Konoha, 142 apt.",
+    "metroStation": "4",
+    "phone": "+7 800 355 35 35",
+    "rentTime": 5,
+    "deliveryDate": "2020-06-06",
+    "comment": "Saske, come back to Konoha",
+    "color": ["BLACK"]
+  },
+  "responses": {
+    "201": {
+      "description": "Успешное создание заказа",
+      "body": {
+        "track": 124124
+      }
+    }
+  }
+}

@@ -1,0 +1,191 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report-3.0.xsd" version="3.0" name="org.example.CourierTests" time="3.985" tests="2" errors="0" skipped="0" failures="0">
+  <properties>
+    <property name="gopherProxySet" value="false"/>
+    <property name="awt.toolkit" value="sun.lwawt.macosx.LWCToolkit"/>
+    <property name="java.specification.version" value="11"/>
+    <property name="sun.cpu.isalist" value=""/>
+    <property name="sun.jnu.encoding" value="UTF-8"/>
+    <property name="java.class.path" value="/Users/andreygrishin/Downloads/Sprint_7/target/test-classes:/Users/andreygrishin/Downloads/Sprint_7/target/classes:/Users/andreygrishin/.m2/repository/junit/junit/4.13.2/junit-4.13.2.jar:/Users/andreygrishin/.m2/repository/org/hamcrest/hamcrest-core/1.3/hamcrest-core-1.3.jar:/Users/andreygrishin/.m2/repository/io/rest-assured/rest-assured/5.4.0/rest-assured-5.4.0.jar:/Users/andreygrishin/.m2/repository/org/apache/groovy/groovy/4.0.16/groovy-4.0.16.jar:/Users/andreygrishin/.m2/repository/org/apache/groovy/groovy-xml/4.0.16/groovy-xml-4.0.16.jar:/Users/andreygrishin/.m2/repository/org/apache/httpcomponents/httpclient/4.5.13/httpclient-4.5.13.jar:/Users/andreygrishin/.m2/repository/org/apache/httpcomponents/httpcore/4.4.13/httpcore-4.4.13.jar:/Users/andreygrishin/.m2/repository/commons-logging/commons-logging/1.2/commons-logging-1.2.jar:/Users/andreygrishin/.m2/repository/commons-codec/commons-codec/1.11/commons-codec-1.11.jar:/Users/andreygrishin/.m2/repository/org/apache/httpcomponents/httpmime/4.5.13/httpmime-4.5.13.jar:/Users/andreygrishin/.m2/repository/org/hamcrest/hamcrest/2.2/hamcrest-2.2.jar:/Users/andreygrishin/.m2/repository/org/ccil/cowan/tagsoup/tagsoup/1.2.1/tagsoup-1.2.1.jar:/Users/andreygrishin/.m2/repository/io/rest-assured/json-path/5.4.0/json-path-5.4.0.jar:/Users/andreygrishin/.m2/repository/org/apache/groovy/groovy-json/4.0.16/groovy-json-4.0.16.jar:/Users/andreygrishin/.m2/repository/io/rest-assured/rest-assured-common/5.4.0/rest-assured-common-5.4.0.jar:/Users/andreygrishin/.m2/repository/io/rest-assured/xml-path/5.4.0/xml-path-5.4.0.jar:/Users/andreygrishin/.m2/repository/org/apache/commons/commons-lang3/3.11/commons-lang3-3.11.jar:/Users/andreygrishin/.m2/repository/io/qameta/allure/allure-junit4/2.29.0/allure-junit4-2.29.0.jar:/Users/andreygrishin/.m2/repository/io/qameta/allure/allure-java-commons/2.29.0/allure-java-commons-2.29.0.jar:/Users/andreygrishin/.m2/repository/org/slf4j/slf4j-api/2.0.13/slf4j-api-2.0.13.jar:/Users/andreygrishin/.m2/repository/io/qameta/allure/allure-model/2.29.0/allure-model-2.29.0.jar:/Users/andreygrishin/.m2/repository/io/qameta/allure/allure-test-filter/2.29.0/allure-test-filter-2.29.0.jar:/Users/andreygrishin/.m2/repository/org/json/json/20231013/json-20231013.jar:/Users/andreygrishin/.m2/repository/com/fasterxml/jackson/core/jackson-databind/2.17.1/jackson-databind-2.17.1.jar:/Users/andreygrishin/.m2/repository/com/fasterxml/jackson/core/jackson-annotations/2.17.1/jackson-annotations-2.17.1.jar:/Users/andreygrishin/.m2/repository/com/fasterxml/jackson/core/jackson-core/2.17.1/jackson-core-2.17.1.jar:"/>
+    <property name="java.vm.vendor" value="Amazon.com Inc."/>
+    <property name="sun.arch.data.model" value="64"/>
+    <property name="java.vendor.url" value="https://aws.amazon.com/corretto/"/>
+    <property name="user.timezone" value="Europe/Moscow"/>
+    <property name="java.vm.specification.version" value="11"/>
+    <property name="os.name" value="Mac OS X"/>
+    <property name="sun.java.launcher" value="SUN_STANDARD"/>
+    <property name="user.country" value="RU"/>
+    <property name="sun.boot.library.path" value="/Library/Java/JavaVirtualMachines/amazon-corretto-11.jdk/Contents/Home/lib"/>
+    <property name="sun.java.command" value="/Users/andreygrishin/Downloads/Sprint_7/target/surefire/surefirebooter-20250706123938039_3.jar /Users/andreygrishin/Downloads/Sprint_7/target/surefire 2025-07-06T12-39-37_888-jvmRun1 surefire-20250706123938039_1tmp surefire_0-20250706123938039_2tmp"/>
+    <property name="jdk.debug" value="release"/>
+    <property name="surefire.test.class.path" value="/Users/andreygrishin/Downloads/Sprint_7/target/test-classes:/Users/andreygrishin/Downloads/Sprint_7/target/classes:/Users/andreygrishin/.m2/repository/junit/junit/4.13.2/junit-4.13.2.jar:/Users/andreygrishin/.m2/repository/org/hamcrest/hamcrest-core/1.3/hamcrest-core-1.3.jar:/Users/andreygrishin/.m2/repository/io/rest-assured/rest-assured/5.4.0/rest-assured-5.4.0.jar:/Users/andreygrishin/.m2/repository/org/apache/groovy/groovy/4.0.16/groovy-4.0.16.jar:/Users/andreygrishin/.m2/repository/org/apache/groovy/groovy-xml/4.0.16/groovy-xml-4.0.16.jar:/Users/andreygrishin/.m2/repository/org/apache/httpcomponents/httpclient/4.5.13/httpclient-4.5.13.jar:/Users/andreygrishin/.m2/repository/org/apache/httpcomponents/httpcore/4.4.13/httpcore-4.4.13.jar:/Users/andreygrishin/.m2/repository/commons-logging/commons-logging/1.2/commons-logging-1.2.jar:/Users/andreygrishin/.m2/repository/commons-codec/commons-codec/1.11/commons-codec-1.11.jar:/Users/andreygrishin/.m2/repository/org/apache/httpcomponents/httpmime/4.5.13/httpmime-4.5.13.jar:/Users/andreygrishin/.m2/repository/org/hamcrest/hamcrest/2.2/hamcrest-2.2.jar:/Users/andreygrishin/.m2/repository/org/ccil/cowan/tagsoup/tagsoup/1.2.1/tagsoup-1.2.1.jar:/Users/andreygrishin/.m2/repository/io/rest-assured/json-path/5.4.0/json-path-5.4.0.jar:/Users/andreygrishin/.m2/repository/org/apache/groovy/groovy-json/4.0.16/groovy-json-4.0.16.jar:/Users/andreygrishin/.m2/repository/io/rest-assured/rest-assured-common/5.4.0/rest-assured-common-5.4.0.jar:/Users/andreygrishin/.m2/repository/io/rest-assured/xml-path/5.4.0/xml-path-5.4.0.jar:/Users/andreygrishin/.m2/repository/org/apache/commons/commons-lang3/3.11/commons-lang3-3.11.jar:/Users/andreygrishin/.m2/repository/io/qameta/allure/allure-junit4/2.29.0/allure-junit4-2.29.0.jar:/Users/andreygrishin/.m2/repository/io/qameta/allure/allure-java-commons/2.29.0/allure-java-commons-2.29.0.jar:/Users/andreygrishin/.m2/repository/org/slf4j/slf4j-api/2.0.13/slf4j-api-2.0.13.jar:/Users/andreygrishin/.m2/repository/io/qameta/allure/allure-model/2.29.0/allure-model-2.29.0.jar:/Users/andreygrishin/.m2/repository/io/qameta/allure/allure-test-filter/2.29.0/allure-test-filter-2.29.0.jar:/Users/andreygrishin/.m2/repository/org/json/json/20231013/json-20231013.jar:/Users/andreygrishin/.m2/repository/com/fasterxml/jackson/core/jackson-databind/2.17.1/jackson-databind-2.17.1.jar:/Users/andreygrishin/.m2/repository/com/fasterxml/jackson/core/jackson-annotations/2.17.1/jackson-annotations-2.17.1.jar:/Users/andreygrishin/.m2/repository/com/fasterxml/jackson/core/jackson-core/2.17.1/jackson-core-2.17.1.jar:"/>
+    <property name="sun.cpu.endian" value="little"/>
+    <property name="user.home" value="/Users/andreygrishin"/>
+    <property name="user.language" value="ru"/>
+    <property name="java.specification.vendor" value="Oracle Corporation"/>
+    <property name="java.version.date" value="2025-01-21"/>
+    <property name="java.home" value="/Library/Java/JavaVirtualMachines/amazon-corretto-11.jdk/Contents/Home"/>
+    <property name="file.separator" value="/"/>
+    <property name="basedir" value="/Users/andreygrishin/Downloads/Sprint_7"/>
+    <property name="java.vm.compressedOopsMode" value="Zero based"/>
+    <property name="line.separator" value="&#10;"/>
+    <property name="java.specification.name" value="Java Platform API Specification"/>
+    <property name="java.vm.specification.vendor" value="Oracle Corporation"/>
+    <property name="java.awt.graphicsenv" value="sun.awt.CGraphicsEnvironment"/>
+    <property name="surefire.real.class.path" value="/Users/andreygrishin/Downloads/Sprint_7/target/surefire/surefirebooter-20250706123938039_3.jar"/>
+    <property name="sun.management.compiler" value="HotSpot 64-Bit Tiered Compilers"/>
+    <property name="java.runtime.version" value="11.0.26+4-LTS"/>
+    <property name="user.name" value="andreygrishin"/>
+    <property name="path.separator" value=":"/>
+    <property name="os.version" value="13.7.5"/>
+    <property name="java.runtime.name" value="OpenJDK Runtime Environment"/>
+    <property name="file.encoding" value="UTF-8"/>
+    <property name="java.vm.name" value="OpenJDK 64-Bit Server VM"/>
+    <property name="java.vendor.version" value="Corretto-11.0.26.4.1"/>
+    <property name="localRepository" value="/Users/andreygrishin/.m2/repository"/>
+    <property name="java.vendor.url.bug" value="https://github.com/corretto/corretto-11/issues/"/>
+    <property name="java.io.tmpdir" value="/var/folders/q4/7yq061y9667gcp6ccprvdq8h0000gn/T/"/>
+    <property name="java.version" value="11.0.26"/>
+    <property name="user.dir" value="/Users/andreygrishin/Downloads/Sprint_7"/>
+    <property name="os.arch" value="x86_64"/>
+    <property name="java.vm.specification.name" value="Java Virtual Machine Specification"/>
+    <property name="java.awt.printerjob" value="sun.lwawt.macosx.CPrinterJob"/>
+    <property name="sun.os.patch.level" value="unknown"/>
+    <property name="java.library.path" value="/Users/andreygrishin/Library/Java/Extensions:/Library/Java/Extensions:/Network/Library/Java/Extensions:/System/Library/Java/Extensions:/usr/lib/java:."/>
+    <property name="java.vm.info" value="mixed mode"/>
+    <property name="java.vendor" value="Amazon.com Inc."/>
+    <property name="java.vm.version" value="11.0.26+4-LTS"/>
+    <property name="java.specification.maintenance.version" value="3"/>
+    <property name="sun.io.unicode.encoding" value="UnicodeBig"/>
+    <property name="java.class.version" value="55.0"/>
+  </properties>
+  <testcase name="testCreateCourierWithoutLogin" classname="org.example.CourierTests" time="1.983">
+    <system-out><![CDATA[Request method:	POST
+Request URI:	https://qa-scooter.praktikum-services.ru/api/v1/courier
+Proxy:			<none>
+Request params:	<none>
+Query params:	<none>
+Form params:	<none>
+Path params:	<none>
+Headers:		Accept=*/*
+				Content-Type=application/json
+Cookies:		<none>
+Multiparts:		<none>
+Body:
+{
+    "login": "test1751794808168",
+    "password": "1234",
+    "firstName": null
+}
+HTTP/1.1 201 Created
+Content-Type: application/json; charset=utf-8
+Date: Sun, 06 Jul 2025 09:40:10 GMT
+Set-Cookie: _yasc=WyH2Tf580MiyOPvP/OywH1R7iZebQcLYVWOkqPyZhb4M1lT0AggEznUMfPIw3QgY; domain=.praktikum-services.ru; path=/; expires=Wed, 04 Jul 2035 09:40:10 GMT; secure
+Access-Control-Allow-Origin: *
+X-Request-Id: 1751794810491503-6404195402291262994
+Content-Length: 11
+X-Powered-By: Express
+ETag: W/"b-Ai2R8hgEarLmHKwesT1qcY913ys"
+
+{
+    "ok": true
+}
+Created courierId: null
+Request method:	POST
+Request URI:	https://qa-scooter.praktikum-services.ru/api/v1/courier
+Proxy:			<none>
+Request params:	<none>
+Query params:	<none>
+Form params:	<none>
+Path params:	<none>
+Headers:		Accept=*/*
+				Content-Type=application/json
+Cookies:		<none>
+Multiparts:		<none>
+Body:
+{
+    "login": "",
+    "password": "1234",
+    "firstName": null
+}
+HTTP/1.1 400 Bad Request
+X-Request-Id: 1751794811504466-6866854492530308445
+Content-Length: 114
+ETag: W/"72-AUDx41VLe1HSztSRMybiiyHwcKY"
+X-Powered-By: Express
+Set-Cookie: _yasc=FCtEio+lXToB78e2P4zr7G3MyyvpV3WRDdVqWlmgc2PlspJuQ5kQKUYgfUAirS7vgA==; domain=.praktikum-services.ru; path=/; expires=Wed, 04 Jul 2035 09:40:11 GMT; secure
+Date: Sun, 06 Jul 2025 09:40:11 GMT
+Access-Control-Allow-Origin: *
+Content-Type: application/json; charset=utf-8
+
+{
+    "code": 400,
+    "message": "Недостаточно данных для создания учетной записи"
+}
+]]></system-out>
+  </testcase>
+  <testcase name="testCreateCourier" classname="org.example.CourierTests" time="1.998">
+    <system-out><![CDATA[Request method:	POST
+Request URI:	https://qa-scooter.praktikum-services.ru/api/v1/courier
+Proxy:			<none>
+Request params:	<none>
+Query params:	<none>
+Form params:	<none>
+Path params:	<none>
+Headers:		Accept=*/*
+				Content-Type=application/json
+Cookies:		<none>
+Multiparts:		<none>
+Body:
+{
+    "login": "test1751794810172",
+    "password": "1234",
+    "firstName": null
+}
+HTTP/1.1 201 Created
+Content-Length: 11
+Date: Sun, 06 Jul 2025 09:40:12 GMT
+X-Request-Id: 1751794812481468-9763650576567131866
+Content-Type: application/json; charset=utf-8
+ETag: W/"b-Ai2R8hgEarLmHKwesT1qcY913ys"
+Access-Control-Allow-Origin: *
+X-Powered-By: Express
+Set-Cookie: _yasc=w5MrFXKZQ6u03y/i77527l4KCKC8LIFzga1I+SG4iSQQTTNa8bMo28P14YW3JLBXVw==; domain=.praktikum-services.ru; path=/; expires=Wed, 04 Jul 2035 09:40:12 GMT; secure
+
+{
+    "ok": true
+}
+Created courierId: null
+Request method:	POST
+Request URI:	https://qa-scooter.praktikum-services.ru/api/v1/courier
+Proxy:			<none>
+Request params:	<none>
+Query params:	<none>
+Form params:	<none>
+Path params:	<none>
+Headers:		Accept=*/*
+				Content-Type=application/json
+Cookies:		<none>
+Multiparts:		<none>
+Body:
+{
+    "login": "test1751794811166",
+    "password": "1234",
+    "firstName": null
+}
+HTTP/1.1 201 Created
+Access-Control-Allow-Origin: *
+Content-Length: 11
+X-Request-Id: 1751794813487802-12075519448672096445
+ETag: W/"b-Ai2R8hgEarLmHKwesT1qcY913ys"
+Date: Sun, 06 Jul 2025 09:40:13 GMT
+X-Powered-By: Express
+Set-Cookie: _yasc=t1Pi1T4cBX8ylo9C2F02RcHk33hKOVe8dzD0QAV2shKmhUh6XN+RrQwzV0v/r8BVKA==; domain=.praktikum-services.ru; path=/; expires=Wed, 04 Jul 2035 09:40:13 GMT; secure
+Content-Type: application/json; charset=utf-8
+
+{
+    "ok": true
+}
+]]></system-out>
+  </testcase>
+</testsuite>
