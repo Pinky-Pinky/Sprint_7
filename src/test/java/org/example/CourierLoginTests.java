@@ -5,6 +5,7 @@ import io.qameta.allure.junit4.DisplayName;
 import io.restassured.response.Response;
 import org.example.api.CourierApi;
 import org.example.models.CourierModel;
+import org.example.utils.RestClient; // Добавлен импорт
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Ignore;
@@ -86,5 +87,24 @@ public class CourierLoginTests {
         response.then()
                 .statusCode(400)
                 .body("message", equalTo("Недостаточно данных для входа"));
+    }
+
+    @Test
+    @DisplayName("Login missing login field")
+    @Description("Test that login fails when login field is missing")
+    public void testLoginMissingLoginField() {
+        // Создаём JSON без поля login
+        String jsonBody = "{\"password\": \"1234\"}"; // Только пароль, без login
+        Response response = given()
+                .spec(RestClient.getBaseSpec())
+                .body(jsonBody)
+                .log().all()
+                .when()
+                .post("/api/v1/courier/login")
+                .then()
+                .extract().response();
+        response.then()
+                .statusCode(400)
+                .body("message", equalTo("Недостаточно данных для входа")); // Ожидаемое сообщение
     }
 }
